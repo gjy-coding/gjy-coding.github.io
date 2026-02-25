@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Developer Portfolio</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* 页面整体样式 - 纯黑灰配色 */
+        body {
+            line-height: 1.6;
+            color: #333333; /* 主文字：深灰色 */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9; /* 页面背景：浅灰色 */
+        }
+
+        /* 头部样式 - 黑灰配色 */
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 1px solid #dddddd; /* 边框：浅灰色 */
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #111111; /* 标题：纯黑色 */
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #555555; /* 副标题：中灰色 */
+        }
+
+        /* 个人介绍+头像样式 */
+        .about {
+            margin-bottom: 50px;
+            padding: 20px;
+            background-color: #ffffff; /* 卡片背景：白色 */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 浅灰色阴影 */
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap; /* 手机端头像和文字换行 */
+        }
+
+        .avatar {
+            width: 180px;       /* 只设置宽度，高度自动适应原始比例 */
+            height: auto;       /* 关键：高度自动，恢复原始比例 */
+            border: none;
+            border-radius: 8px; /* 保持圆角风格 */
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 280px; /* 手机端文字最小宽度 */
+        }
+
+        .about-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #111111; /* 标题：纯黑色 */
+        }
+
+        /* 项目区域样式 */
+        .projects {
+            margin-bottom: 50px;
+        }
+
+        .projects h2 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: #111111; /* 标题：纯黑色 */
+            text-align: center;
+        }
+
+        .project-card {
+            background-color: #ffffff; /* 卡片背景：白色 */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 浅灰色阴影 */
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #222222; /* 项目标题：深黑色 */
+        }
+
+        /* 项目媒体容器：横向并排核心样式 */
+        .project-media {
+            margin: 15px 0;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;       /* 横向排列 */
+            gap: 15px;           /* 元素间距 */
+            flex-wrap: wrap;     /* 手机端自动换行 */
+        }
+
+        /* 统一媒体元素尺寸：图片+视频 */
+        .project-img, .project-video {
+            flex: 1;             /* 均分宽度 */
+            min-width: 280px;    /* 手机端最小宽度 */
+            max-width: 100%;     /* 不超出容器 */
+            height: 300px;       /* 统一高度 */
+            border-radius: 4px;
+            outline: none;
+            border: 1px solid #eeeeee; /* 媒体边框：极浅灰 */
+        }
+
+        /* 图片样式：裁剪保持比例 + 项目2图片逆时针旋转90度 */
+        .project-img {
+            object-fit: cover;
+        }
+        /* 项目2图片旋转专用类 */
+        .rotate-90-ccw {
+            transform: rotate(-90deg); /* 逆时针旋转90度 */
+            /* 旋转后修正尺寸和位置 */
+            object-fit: cover;
+            height: 300px;
+            width: auto;
+            flex: none;
+            max-width: 100%;
+        }
+
+        /* 视频样式：完整显示内容 + 隐藏音量控件 */
+        .project-video {
+            object-fit: contain;
+        }
+        /* 核心：隐藏所有浏览器的音量控件 */
+        .project-video::-webkit-media-controls-volume-slider {
+            display: none !important;
+        }
+        .project-video::-webkit-media-controls-mute-button {
+            display: none !important;
+        }
+        .project-video::-moz-media-controls-volume-slider {
+            display: none !important;
+        }
+        .project-video::-moz-media-controls-mute-button {
+            display: none !important;
+        }
+        .project-video::-ms-media-controls-volume-slider {
+            display: none !important;
+        }
+        .project-video::-ms-media-controls-mute-button {
+            display: none !important;
+        }
+
+        .project-card p {
+            margin-bottom: 20px; /* 增加与按钮的间距 */
+            color: #444444; /* 项目描述：中灰色 */
+        }
+
+        /* 按钮容器样式：用于居中按钮 */
+        .button-container {
+            text-align: center; /* 按钮居中 */
+        }
+
+        /* 按钮样式：黑灰边框风格，无填充色 */
+        .project-link {
+            display: inline-block;
+            padding: 8px 20px;
+            color: #333333;      /* 文字：深灰色 */
+            border: 1px solid #666666; /* 边框：中灰色 */
+            background-color: transparent; /* 透明背景 */
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s;
+            margin: 0 5px;
+        }
+
+        .project-link:hover {
+            background-color: #f0f0f0; /* 鼠标悬停：浅灰色背景 */
+            color: #111111; /* 悬停文字：纯黑色 */
+        }
+
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #dddddd; /* 边框：浅灰色 */
+            color: #666666; /* 页脚文字：中灰色 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部：姓名和标签 -->
+    <header>
+        <h1>Your Full Name</h1>
+        <p class="tagline">Software Developer | Problem Solver | Lifelong Learner</p>
+    </header>
+
+    <!-- 个人介绍+头像 -->
+    <section class="about">
+        <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/Biophoto.jpeg" alt="Your Profile Photo" class="avatar">
+        <div class="about-text">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm a passionate developer with a focus on web development and open-source contributions. 
+                I love building practical, user-friendly solutions to real-world problems. With hands-on experience in 
+                HTML, CSS, JavaScript and Python, I'm constantly expanding my skill set and working on interesting projects.
+            </p>
+            <p>
+                When I'm not coding, I enjoy reading tech blogs, contributing to open source, and hiking. 
+                I'm always open to collaboration and new opportunities—feel free to connect with me!
+            </p>
+        </div>
+    </section>
+
+    <!-- 项目展示区域 -->
+    <section class="projects">
+        <h2>My Projects</h2>
+
+        <!-- 项目 1：两个视频横向并排 -->
+        <div class="project-card">
+            <h3>Robot Self-Portrait: Drawing</h3>
+            <div class="project-media">
+                <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
+                    <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/circle.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
+                    <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/sim_robotics_arm.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>
+                A web-based task management tool built with Python and Django. My contributions included implementing the user authentication module 
+                and optimizing database queries to improve load speed by 30%. These two videos show the login flow and the optimized data loading feature.
+            </p>
+            <div class="button-container">
+                <a href="https://gitlab.com/owner-username/project1" target="_blank" class="project-link">View on GitLab</a>
+            </div>
+        </div>
+
+        <!-- 项目 2：图片+视频横向并排（图片逆时针旋转90度） -->
+        <div class="project-card">
+            <h3>Robot Self-Portrait: Erasing</h3>
+            <div class="project-media">
+                <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/erasing-board.jpeg" alt="Project 2 Preview" class="project-img rotate-90-ccw">
+                <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
+                    <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/ReplayVideo2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>
+                A data visualization dashboard for sales analytics. I contributed to the frontend development using React and Chart.js, 
+                improving the UI responsiveness and adding interactive pie charts for sales breakdown analysis.
+            </p>
+            <div class="button-container">
+                <a href="https://gitlab.com/owner-username/project2" target="_blank" class="project-link">View on GitLab</a>
+            </div>
+        </div>
+
+        <!-- 项目 3：新增，图片+视频横向并排，带GitLab链接 -->
+        <div class="project-card">
+            <h3>Task-Board Operation</h3>
+            <div class="project-media">
+                <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/template.jpeg" alt="Task-Board Template" class="project-img">
+                <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
+                    <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/moving_in_rviz.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>
+                Development and operation of a task-board system for robot mission planning. The image shows the UI template, and the video demonstrates the robot moving according to the tasks assigned in the RViz environment.
+            </p>
+            <div class="button-container">
+                <a href="https://gitlab.com/owner-username/project3" target="_blank" class="project-link">View on GitLab</a>
+            </div>
+        </div>
+
+        <!-- 项目 4：单个视频，无GitLab链接 -->
+        <div class="project-card">
+            <h3>Press Elevator Button</h3>
+            <div class="project-media">
+                <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
+                    <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/Video_Robotarm_Simulation.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <p>
+                A mobile app prototype for fitness tracking, developed with Flutter. I was responsible for the UI/UX design and the implementation of the workout logging feature, 
+                ensuring a smooth and intuitive user experience across iOS and Android platforms.
+            </p>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2024 Your Full Name | Hosted on GitHub Pages</p>
+    </footer>
+</body>
+</html>
