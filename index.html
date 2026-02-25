@@ -10,17 +10,20 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            /* 更换为更专业的Roboto字体，适配英文技术内容 */
+            font-family: 'Roboto', 'Arial', sans-serif;
         }
 
-        /* 页面整体样式 - 纯黑灰配色 */
+        /* 页面整体样式 - 优化浅灰色背景 */
         body {
-            line-height: 1.6;
+            line-height: 1.7; /* 增大行高，提升可读性 */
             color: #333333; /* 主文字：深灰色 */
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f9f9f9; /* 页面背景：浅灰色 */
+            /* 更协调的浅灰色背景（比原f9f9f9更柔和） */
+            background-color: #C0C0C0; 
+            font-size: 20px; /* 基础字体大小 */
         }
 
         /* 头部样式 - 黑灰配色 */
@@ -73,6 +76,13 @@
             color: #111111; /* 标题：纯黑色 */
         }
 
+        /* 放大About Me正文，提升显眼度 */
+        .about-text p {
+            font-size: 18px; /* 放大到18px，比基础字体大 */
+            line-height: 1.7;
+            color: #333333; /* 加深文字颜色，更清晰 */
+        }
+
         /* 项目区域样式 */
         .projects {
             margin-bottom: 50px;
@@ -85,11 +95,12 @@
             text-align: center;
         }
 
+        /* 项目卡片样式：增大内边距，内容离边框更远 */
         .project-card {
             background-color: #ffffff; /* 卡片背景：白色 */
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* 浅灰色阴影 */
-            padding: 20px;
+            padding: 30px; /* 从20px增大到25px，内边距更宽松 */
             margin-bottom: 30px;
         }
 
@@ -159,9 +170,12 @@
             display: none !important;
         }
 
+        /* 放大项目描述文字，提升显眼度 */
         .project-card p {
             margin-bottom: 20px; /* 增加与按钮的间距 */
-            color: #444444; /* 项目描述：中灰色 */
+            color: #333333; /* 加深文字颜色，更清晰 */
+            font-size: 18px; /* 从16px放大到18px */
+            line-height: 1.7; /* 优化行高 */
         }
 
         /* 按钮容器样式：用于居中按钮 */
@@ -180,6 +194,7 @@
             border-radius: 4px;
             transition: all 0.3s;
             margin: 0 5px;
+            font-size: 16px; /* 按钮字体保持原大小，突出正文 */
         }
 
         .project-link:hover {
@@ -193,30 +208,31 @@
             padding: 20px 0;
             border-top: 1px solid #dddddd; /* 边框：浅灰色 */
             color: #666666; /* 页脚文字：中灰色 */
+            font-size: 16px;
         }
     </style>
 </head>
 <body>
     <!-- 头部：姓名和标签 -->
     <header>
-        <h1>Your Full Name</h1>
-        <p class="tagline">Software Developer | Problem Solver | Lifelong Learner</p>
+        <h1>Jiyun Gong</h1>
+
     </header>
 
     <!-- 个人介绍+头像 -->
     <section class="about">
         <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/Biophoto.jpeg" alt="Your Profile Photo" class="avatar">
         <div class="about-text">
-            <h2>About Me</h2>
-            <p>
-                Hi! I'm a passionate developer with a focus on web development and open-source contributions. 
-                I love building practical, user-friendly solutions to real-world problems. With hands-on experience in 
-                HTML, CSS, JavaScript and Python, I'm constantly expanding my skill set and working on interesting projects.
-            </p>
-            <p>
-                When I'm not coding, I enjoy reading tech blogs, contributing to open source, and hiking. 
-                I'm always open to collaboration and new opportunities—feel free to connect with me!
-            </p>
+        <h2>About Me</h2>
+        <p>
+        	Pursuing a Master of Science (M.Sc.) in <em>Robotics, Cognition, Intelligence</em><br>
+            Robotics & Automation Engineer with hands-on experience in robot arm manipulation, simulation, and vision-based task automation<br>
+        </p>
+        <p>
+            <strong>Technical Skills:</strong><br>
+            - Frameworks: ROS / ROS 2<br>
+            - Programming: Python, C++<br>
+        </p>
         </div>
     </section>
 
@@ -226,7 +242,7 @@
 
         <!-- 项目 1：两个视频横向并排 -->
         <div class="project-card">
-            <h3>Robot Self-Portrait: Drawing</h3>
+            <h3>UR10e Whiteboard Drawing and Simulation</h3>
             <div class="project-media">
                 <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
                     <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/circle.mp4" type="video/mp4">
@@ -238,8 +254,7 @@
                 </video>
             </div>
             <p>
-                A web-based task management tool built with Python and Django. My contributions included implementing the user authentication module 
-                and optimizing database queries to improve load speed by 30%. These two videos show the login flow and the optimized data loading feature.
+Converted SVG files to URScript for execution on a UR10e whiteboard drawing setup and visualized the motion via a robot icon in RoboDK.
             </p>
             <div class="button-container">
                 <a href="https://gitlab.com/owner-username/project1" target="_blank" class="project-link">View on GitLab</a>
@@ -248,7 +263,7 @@
 
         <!-- 项目 2：图片+视频横向并排（图片逆时针旋转90度） -->
         <div class="project-card">
-            <h3>Robot Self-Portrait: Erasing</h3>
+            <h3>FrankaArm3 Whiteboard Cleaning</h3>
             <div class="project-media">
                 <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/erasing-board.jpeg" alt="Project 2 Preview" class="project-img rotate-90-ccw">
                 <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
@@ -257,8 +272,7 @@
                 </video>
             </div>
             <p>
-                A data visualization dashboard for sales analytics. I contributed to the frontend development using React and Chart.js, 
-                improving the UI responsiveness and adding interactive pie charts for sales breakdown analysis.
+Manually taught cleaning trajectories and achieved surface pressure during playback through joint PID adjustments within the franka_ros2 framework.
             </p>
             <div class="button-container">
                 <a href="https://gitlab.com/owner-username/project2" target="_blank" class="project-link">View on GitLab</a>
@@ -267,7 +281,7 @@
 
         <!-- 项目 3：新增，图片+视频横向并排，带GitLab链接 -->
         <div class="project-card">
-            <h3>Task-Board Operation</h3>
+            <h3>Robot Task Board Manipulation</h3>
             <div class="project-media">
                 <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/template.jpeg" alt="Task-Board Template" class="project-img">
                 <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
@@ -276,7 +290,7 @@
                 </video>
             </div>
             <p>
-                Development and operation of a task-board system for robot mission planning. The image shows the UI template, and the video demonstrates the robot moving according to the tasks assigned in the RViz environment.
+Implemented button identification through RGB-D template matching and controlled the task workflow via state machine logic. (Robot motion and logic not fully completed)
             </p>
             <div class="button-container">
                 <a href="https://gitlab.com/owner-username/project3" target="_blank" class="project-link">View on GitLab</a>
@@ -285,23 +299,23 @@
 
         <!-- 项目 4：单个视频，无GitLab链接 -->
         <div class="project-card">
-            <h3>Press Elevator Button</h3>
+            <h3>Elevator Button Pressing in Gazebo Simulation</h3>
             <div class="project-media">
+            <img src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/elevator.jpeg" alt="elevator" class="project-img">
                 <video controls muted class="project-video" onvolumechange="this.volume=0;this.muted=true;">
                     <source src="https://raw.githubusercontent.com/gjy-coding/gjy-coding.github.io/main/Video_Robotarm_Simulation.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
             </div>
             <p>
-                A mobile app prototype for fitness tracking, developed with Flutter. I was responsible for the UI/UX design and the implementation of the workout logging feature, 
-                ensuring a smooth and intuitive user experience across iOS and Android platforms.
+Built a Gazebo environment for the Arduino Braccio arm and implemented inverse kinematics via MoveGroup; integrated template matching for button identification (Hardware deployment and source code access unavailable).
             </p>
         </div>
     </section>
 
     <!-- 页脚 -->
     <footer>
-        <p>&copy; 2024 Your Full Name | Hosted on GitHub Pages</p>
+        <p>Hosted on GitHub Pages</p>
     </footer>
 </body>
 </html>
